@@ -69,6 +69,7 @@ export default function UserRegister() {
               <FormLabel> Name </FormLabel>
               <Input type="text" name="name" onChange={handleChange} onBlur={handleBlur} value={values.name}></Input>
               <ErrorMessage component={"div"} name="name" style={{color:'red'}}></ErrorMessage>
+              {values.name}
             </FormControl>
             <FormControl>
               <FormLabel> Email </FormLabel>

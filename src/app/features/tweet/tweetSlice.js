@@ -10,6 +10,14 @@ export const fetchTweets = createAsyncThunk(
   }
 );
 
+export const postTweet = createAsyncThunk(
+  "tweet/postTweetStatus",
+  async (data) => {
+    const response = await tweetApi.postTweet(data);
+    return response.data;
+  }
+);
+
 const initialState = {
   tweetList: [],
 };
@@ -23,6 +31,10 @@ export const tweetSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchTweets.fulfilled, (state, action) => {
       state.tweetList = action.payload;
+    });
+    builder.addCase(postTweet.fulfilled, () => {
+      // redirect
+      fetchTweets();
     });
   },
 });
